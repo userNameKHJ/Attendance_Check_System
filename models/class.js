@@ -1,5 +1,7 @@
 const Sequelize = require('sequelize');
 
+// id, password, name, type, nickname, description
+
 module.exports = class Class extends Sequelize.Model {
     static init(sequelize) {
         return super.init({
@@ -34,7 +36,5 @@ module.exports = class Class extends Sequelize.Model {
 
     static associate(db) {
         db.Class.hasMany(db.Attendance, { foreignKey: 'classId', sourceKey: 'id', onDelete: 'cascade' });
-        db.Class.hasMany(db.Member, { foreignKey: 'classId', sourceKey: 'id', onDelete: 'cascade' });
-        db.Class.belongsTo(db.Teacher, { foreignKey: 'classId', sourceKey: 'id', onDelete: 'cascade' });
     }
 };
